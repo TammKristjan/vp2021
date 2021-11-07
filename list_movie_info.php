@@ -1,4 +1,4 @@
-﻿<?php
+<?php
     //alustame sessiooni
     session_start();
     //kas on sisselogitud
@@ -12,11 +12,9 @@
     }
 	
     require_once("../../config.php");
-    //echo $server_host;
-    require_once("fnc_film.php");
-    $films_html = null;
-    $films_html = read_all_films();
-    
+	require_once("fnc_movie.php");
+    require_once("fnc_general.php");
+      
     require("page_header.php");
 ?>
 
@@ -24,13 +22,12 @@
 	<p>See leht on valminud õppetöö raames ja ei sisalda mingisugust tõsiseltvõetavat sisu!</p>
 	<p>Õppetöö toimus <a href="https://www.tlu.ee/dt">Tallinna Ülikooli Digitehnoloogiate instituudis</a>.</p>
 	<hr>
-	<ul>
+    <ul>
         <li><a href="?logout=1">Logi välja</a></li>
 		<li><a href="home.php">Avaleht</a></li>
-		<li><a href="add_films.php">Filmide lisamine andmebaasi</a> versioon 1</li>
     </ul>
 	<hr>
-    <h2>Eesti filmid</h2>
-    <?php echo $films_html; ?>
+    <h2>Filmi info</h2>
+    <?php echo list_person_movie_info(); ?>
 </body>
 </html>
