@@ -1,5 +1,5 @@
- <?php 
-    $database = "if21_kristjan_tamm";
+<?php 
+    $database = "if21_inga_pe_T2";//kuna mul endal pole, kasutan Inga oma
     
     function read_all_films(){
         //var_dump($GLOBALS);

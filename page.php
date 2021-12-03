@@ -1,13 +1,17 @@
 ﻿<?php
     //alustame sessiooni
-    session_start();
+    //session_start();
+	require_once("classes/SessionManager.class.php");
+	SessionManager::sessionStart("vp", 0, "/~kritam/vp2021/", "greeny.cs.tlu.ee");
     require_once("../../config.php");
     require_once("fnc_user.php");
+    require_once("fnc_gallery.php");
 	$author_name = "Kristjan Tamm";
 	$todays_evaluation = null; //$todays_evaluation = "";
 	$inserted_adjective = null;
 	$adjective_error = null;
-	require_once("fnc_gallery.php");
+	
+	//var_dump($_COOKIE);
 	
 	//kontrollin kas on klikitud submit nuppu
 	if(isset($_POST["todays_adjective_input"])){
@@ -126,8 +130,8 @@
 		echo $todays_evaluation;
 		
 	?>
-	<hr>
-	<?php echo show_latest_public_photo(); ?>
+    <hr>
+    <?php echo show_latest_public_photo(); ?>
 	<form method="POST">
 		<?php echo $photo_select_html; ?>
 		<input type="submit" name="photo_select_submit" value="Näita valitud fotot">

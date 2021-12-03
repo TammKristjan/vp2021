@@ -1,5 +1,5 @@
 <?php 
-    $database = "if21_kristjan_tamm";
+    $database = "if21_kristjan_tamm";//kuna mul endal pole, kasutan Inga oma
     
     function read_all_person($selected){
         $html = null;

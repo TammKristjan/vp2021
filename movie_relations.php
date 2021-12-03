@@ -1,15 +1,5 @@
 <?php
-    //alustame sessiooni
-    session_start();
-    //kas on sisselogitud
-    if(!isset($_SESSION["user_id"])){
-        header("Location: page.php");
-    }
-    //väljalogimine
-    if(isset($_GET["logout"])){
-        session_destroy();
-        header("Location: page.php");
-    }
+    require_once("use_session.php");
 	
     require_once("../../config.php");
 	require_once("fnc_movie.php");
@@ -24,7 +14,7 @@
     
     $photo_upload_notice = null;
     $selected_person_for_photo = null;
-    $photo_dir = "./movie_photos/";
+    $photo_dir = "../movie_photos/";
     
     if(isset($_POST["person_in_movie_submit"])){
         if(isset($_POST["person_input"]) and !empty($_POST["person_input"])){

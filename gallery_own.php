@@ -1,23 +1,14 @@
 <?php
-    //alustame sessiooni
-    session_start();
-    //kas on sisselogitud
-    if(!isset($_SESSION["user_id"])){
-        header("Location: page.php");
-    }
-    //väljalogimine
-    if(isset($_GET["logout"])){
-        session_destroy();
-        header("Location: page.php");
-    }
+    require_once("use_session.php");
 	
     require_once("../../config.php");
+	require_once("fnc_general.php");
 	require_once("fnc_gallery.php");
     
     $page = 1;
     $page_limit = 5;
-    $photo_count = count_public_photos(2);
-    //hoolitseme, et saaks liikuda vaid legaalsetele lehekülgedele, mis on olemas
+    $photo_count = count_own_photos();
+    //hoolitseme, et saaks liikuda vaid legaalsetelöe lehekülgedele, mis on olemas
     if(!isset($_GET["page"]) or $_GET["page"] < 1){
         $page = 1;
     } elseif(round($_GET["page"] - 1) * $page_limit >= $photo_count){

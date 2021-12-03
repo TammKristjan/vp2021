@@ -1,15 +1,5 @@
 ﻿<?php
-    //alustame sessiooni
-    session_start();
-    //kas on sisselogitud
-    if(!isset($_SESSION["user_id"])){
-        header("Location: page.php");
-    }
-    //väljalogimine
-    if(isset($_GET["logout"])){
-        session_destroy();
-        header("Location: page.php");
-    }
+    require_once("use_session.php");
 	
     require_once("../../config.php");
 	require_once("fnc_user.php");
@@ -26,7 +16,6 @@
 		$_SESSION["text_color"] = $_POST["text_color_input"];
 	}
 	
-    
     require("page_header.php");
 ?>
 
@@ -45,7 +34,7 @@
         <br>
         <textarea name="description_input" id="description_input" rows="10" cols="80" placeholder="Minu lühikirjeldus ..."><?php echo $description; ?></textarea>
         <br>
-        <label for="bg_color_input">Taustavärv</label>
+		<label for="bg_color_input">Taustavärv</label>
         <br>
         <input type="color" name="bg_color_input" id="bg_color_input" value="<?php echo $_SESSION["bg_color"]; ?>">
         <br>
